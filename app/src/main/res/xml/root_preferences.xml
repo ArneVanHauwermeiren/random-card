@@ -1,0 +1,37 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory app:title="Game">
+
+        <SwitchPreferenceCompat
+            app:key="play_each_card_once"
+            app:summaryOff="The game will never end. It will endlessly show a random card."
+            app:summaryOn="The game will end after each card has been shown once"
+            app:title="Play each card once" />
+
+        <SwitchPreferenceCompat
+            app:key="game_has_jokers"
+            app:summaryOff="The game contains the standard 54 cards."
+            app:summaryOn="The game contains jokers."
+            app:title="Include jokers in deck" />
+
+        <EditTextPreference
+            app:key="number_of_jokers"
+            app:dependency="game_has_jokers"
+            app:title="Number of jokers"
+            android:digits="0123456789"
+            app:useSimpleSummaryProvider="true"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="App">
+        <DropDownPreference
+            app:title="Theme (Light/Dark)"
+            app:key="app_theme"
+            android:entryValues="@array/themes_array"
+            android:entries="@array/themes_array"
+            app:defaultValue="System Default"
+            app:useSimpleSummaryProvider="true">
+        </DropDownPreference>
+    </PreferenceCategory>
+</PreferenceScreen>
